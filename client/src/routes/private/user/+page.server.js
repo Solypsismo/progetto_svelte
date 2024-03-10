@@ -16,7 +16,7 @@ export async function load(event) {
     if(response.success){
         return {post: response.post};
     }else{
-        console.log("Ziopera bro");
+        console.log("failed");
     }
 }
 
