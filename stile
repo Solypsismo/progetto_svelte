@@ -1,0 +1,16 @@
+.PADRE {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Altezza al 100% dello schermo */
+}
+
+.NAVBAR_SUPERIORE, .NAVBAR_INFERIORE {
+  background-color: #333; /* Colore di sfondo della navbar */
+  color: #fff; /* Colore del testo */
+  padding: 10px 20px; /* Padding per spaziatura interna */
+}
+
+.CONTENUTO_PAGINA {
+  flex: 1; /* Occupa lo spazio rimanente */
+  overflow-y: auto; /* Aggiungi scrollbar se il contenuto è più grande dello schermo */
+}
