@@ -1,6 +1,8 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const User = require('../model/User');
+const Post = require('../model/Post');
+
 const { authenticateToken, upload } = require('../utility/functions');
 const api_user = express.Router();
 
@@ -25,6 +27,47 @@ api_user.post('/api/auth-with-password', async (req, res) => {
     } else {
         res.json({ success: false, message: "User not found" });
     }
+})
+
+api_user.post("/api/cerca-utenti", async (req, res) => {
+    try {
+        const prefix = req.body.username;
+        const regex = new RegExp(`^${prefix}`, 'i');
+        const users = await User.find({ username: regex }).limit(10).select("-_id username nome avatar_path");
+
+        if(users.length === 0) {
+            res.json({success: false});
+            return;
+        }
+        
+        res.json({success: true, utenti: users});
+    } catch (error) {
+        res.json({success: false});
+    }
+})
+
+api_user.get("/api/get/:username", async (req, res) => {
+    const username = req.params.username;
+
+    const utente = await User.findOne({ username }).select("username biografia nome avatar_path num_amici");
+    
+    if(utente) {
+        const posts = await Post.find({user_id: utente._id}).select("path descrizione num_like data_pubblicazione");
+
+        res.json({
+            success: true,
+            username: utente.username,
+            nome: utente.nome,
+            avatar_path: utente.avatar_path, 
+            num_amici: utente.num_amici,
+            biografia: utente.biografia,
+            posts
+        });
+    }else {
+        res.json({success: false})
+    }
+
+
 })
 
 api_user.post("/api/update-avatar", authenticateToken, upload.single('image'), async (req, res) => {

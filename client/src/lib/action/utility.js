@@ -12,7 +12,7 @@ async function PostUpload(event) {
 
     formData.append("token", token);
 
-    const response = await fetch("http://localhost:3000/post/api/create", { // Sostituisci con l'URL corretto per la tua richiesta POST
+    const response = await fetch("http://localhost:3000/post/api/create", {
         method: "POST",
         headers: {
             "Authorization": `Bearer ${token}`
@@ -71,8 +71,8 @@ async function ChangeProfilePic(event) {
         const options = {
             path: "/",
             httpOnly: true,
-            sameSite: "none",
-            domain: "192.168.1.149",
+            sameSite: "strict",
+            domain: "192.168.43.42",
         }
 
         if (responseParse.success) {
@@ -80,7 +80,7 @@ async function ChangeProfilePic(event) {
             event.cookies.set("token", responseParse.token, options)
             console.log("Upload riuscito");
         } else {
-            console.log("zio pera");
+            console.log("fail");
         }
 
     } catch (error) {

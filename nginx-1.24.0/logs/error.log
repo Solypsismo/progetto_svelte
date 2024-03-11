@@ -67,3 +67,14 @@
 2024/03/11 09:42:52 [error] 8604#7048: *7 CreateFile() "C:\Users\GiuseppeCappiello\Desktop\Giuseppe\svelte repos\SvelteProg_v_0.1\nginx-1.24.0/html/favicon.ico" failed (2: The system cannot find the file specified), client: 192.168.43.42, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "192.168.43.42", referrer: "https://192.168.43.42/"
 2024/03/11 09:48:38 [crit] 8604#7048: *9 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
 2024/03/11 09:49:25 [notice] 2432#18060: signal process started
+2024/03/11 10:50:50 [notice] 7672#5064: signal process started
+2024/03/11 11:18:40 [crit] 1492#17440: *5 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
+2024/03/11 11:38:14 [notice] 15668#11136: signal process started
+2024/03/11 12:38:58 [error] 17972#15192: *7 CreateFile() "C:\Users\GiuseppeCappiello\Desktop\Giuseppe\svelte repos\SvelteProg_v_0.1\nginx-1.24.0/html/favicon.ico" failed (2: The system cannot find the file specified), client: 192.168.43.42, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "192.168.43.42", referrer: "https://192.168.43.42/"
+2024/03/11 12:40:32 [crit] 17972#15192: *7 CreateFile() "C:\Users\GiuseppeCappiello\Desktop\Giuseppe\svelte repos\SvelteProg_v_0.1\nginx-1.24.0/html/https:/daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" failed (123: The filename, directory name, or volume label syntax is incorrect), client: 192.168.43.42, server: localhost, request: "GET /https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg HTTP/1.1", host: "192.168.43.42", referrer: "https://192.168.43.42:5173/"
+2024/03/11 12:48:42 [crit] 17972#15192: *13 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
+2024/03/11 13:00:55 [notice] 13160#10624: signal process started
+2024/03/11 14:33:20 [crit] 3868#5448: *5 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
+2024/03/11 15:03:20 [crit] 3868#5448: *17 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
+2024/03/11 15:33:19 [crit] 3868#5448: *18 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
+2024/03/11 16:03:18 [crit] 3868#5448: *19 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443

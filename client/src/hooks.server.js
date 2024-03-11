@@ -7,7 +7,7 @@ dotenv.config();
 const KEY = process.env.KEY;
 
 export const handle = async ({ event, resolve }) => {
-    if(event.url.pathname.startsWith("/private")){
+    if(event.url.pathname.startsWith("/private") || event.url.pathname.startsWith("/search")){
         const token = event.cookies.get("token");
 
         if(!token){
