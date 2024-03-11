@@ -25,7 +25,7 @@
 					<div class="w-24 mask mask-hexagon">
 						<img
 							alt="immagine-profilo"
-							src={data.avatar_path.startsWith("https") ? data.avatar_path : `https://192.168.43.42/${data.avatar_path}`}
+							src={data.avatar_path.startsWith("https") ? data.avatar_path : `https://192.168.1.161/${data.avatar_path}`}
 						/>
 					</div>
 				</div>
@@ -84,7 +84,7 @@
 					>
 						<img
 							data-id-immagine={post._id}
-							src={'https://192.168.43.42/' + post.path}
+							src={'https://192.168.1.161/' + post.path}
 							alt="img"
 							class="aspect-square"
 						/>

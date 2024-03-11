@@ -19,7 +19,7 @@
 						alt="immagine-profilo"
 						src={data.utente.avatar_path.startsWith('https')
 							? data.utente.avatar_path
-							: `https://192.168.43.42/${data.utente.avatar_path}`}
+							: `https://192.168.1.161/${data.utente.avatar_path}`}
 					/>
 				</div>
 			</div>
@@ -44,6 +44,10 @@
 			{#if data.utente.biografia.length > 0}
 				{data.utente.biografia}
 			{/if}
+		</div>
+
+		<div class="w-screen p-2">
+			<button class="btn btn-primary w-full"> Invia Richiesta </button>
 		</div>
 
 		<div class="w-screen">
@@ -77,7 +81,7 @@
 						>
 							<img
 								data-id-immagine={post._id}
-								src={'https://192.168.43.42/' + post.path}
+								src={'https://192.168.1.161/' + post.path}
 								alt="img"
 								class="aspect-square"
 							/>

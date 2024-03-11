@@ -16,7 +16,7 @@
 <div data-username={username} class="w-full outline outline-1 h-[100px] flex profile-info" on:click={handleClick}>
     <div class="avatar aspect-square flex justify-center items-center">
         <div class="w-16 rounded-full">
-          <img src={immagine_profilo.startsWith("https") ? immagine_profilo : "https://192.168.43.42/" + immagine_profilo} alt="immagine-profilo"/>
+          <img src={immagine_profilo.startsWith("https") ? immagine_profilo : "https://192.168.1.161/" + immagine_profilo} alt="immagine-profilo"/>
         </div>
     </div>
 
