@@ -5,6 +5,9 @@
 	import Navbar from '$lib/components/navbar.svelte';
 
 	export let data;
+	export let form;
+
+	console.log(form);
 	console.log(data);
 </script>
 
@@ -39,7 +42,7 @@
 
 		<div class="p-2">
 			<div class="font-bold text-lg">
-				{data.utente.username} 
+				{data.utente.username}
 			</div>
 			{#if data.utente.biografia.length > 0}
 				{data.utente.biografia}
@@ -47,7 +50,43 @@
 		</div>
 
 		<div class="w-screen p-2">
-			<button class="btn btn-primary w-full"> Invia Richiesta </button>
+			{#if data.res_form?.success}
+				<div class="toast toast-top toast-center">
+					<div class="alert alert-success">
+						<span>Richiesta inviata con successo!.</span>
+					</div>
+				</div>
+			{/if}
+
+
+			<!-- //TODO: CREA TUTTI GLI ENDPOINT PER ACCETTARE/RIFIUTARE/ANNULLARE LA RICHIESTA -->
+			{#if !data.status}
+				<form method="POST">
+					<input type="hidden" name="username" value={data.utente.username} />
+					<button type="submit" class="btn btn-primary w-full"> Invia Richiesta </button>
+				</form>
+			{:else if data.status == 'io ho inviato la richiesta'}
+				<form method="POST">
+					<input type="hidden" name="username" value={data.utente.username} />
+					<button type="submit" class="btn btn-warning w-full"> Richiesta in attesa </button>
+				</form>
+			{:else if data.status == "mi e stata inviata la richiesta"}
+				<div class="grid grid-cols-2 gap-2">
+					<div>
+						<form method="POST">
+							<input type="hidden" name="username" value={data.utente.username} />
+							<button type="submit" class="btn btn-success w-full"> Accetta Richiesta </button>
+						</form>
+					</div>
+
+					<div>
+						<form method="POST">
+							<input type="hidden" name="username" value={data.utente.username} />
+							<button type="submit" class="btn btn-error w-full"> Rifiuta Richiesta </button>
+						</form>
+					</div>
+				</div>
+			{/if}
 		</div>
 
 		<div class="w-screen">
@@ -75,7 +114,7 @@
 						<!-- svelte-ignore a11y-unknown-role -->
 						<!-- svelte-ignore a11y-click-events-have-key-events -->
 						<div
-							on:click={console.log('ciao')}
+							on:click={() => {console.log('ciao')}}
 							data-id-immagine={post._id}
 							class="outline outline-1 outline-black aspect-square"
 						>
