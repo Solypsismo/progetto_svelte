@@ -1,6 +1,7 @@
 const express = require('express');
 const { authenticateToken } = require('../utility/functions');
 const Friendship = require('../model/Friendship');
+const User = require('../model/User');
 
 const api_friendship = express.Router();
 
@@ -91,6 +92,20 @@ api_friendship.post("/api/accept-request", authenticateToken, async (req, res) =
         
         try {
             await richiesta.save();
+
+            const [ user_1, user_2 ] = await Promise.all([
+                User.findOne({username: username_reciver}),
+                User.findOne({username: username_sender})
+            ])
+
+            user_1.num_amici = user_1.num_amici + 1;
+            user_2.num_amici = user_2.num_amici + 1;
+
+            await Promise.all([
+                user_1.save(),
+                user_2.save()
+            ]);
+
             res.json({success: true})
         } catch (error) {
             res.json({success: false});

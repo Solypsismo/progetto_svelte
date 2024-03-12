@@ -2,7 +2,7 @@
 // @ts-nocheck
 
 	export let biografia;
-	export let value_immagine;
+	export let value_immagine = undefined;
 </script>
 
 <dialog id="avatar_modal" class="modal">

@@ -1,6 +1,10 @@
 // @ts-nocheck
 import { redirect } from "@sveltejs/kit";
 
+function setTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+}
+
 async function PostUpload(event) {
     const formData = await event.request.formData();
 
@@ -88,4 +92,4 @@ async function ChangeProfilePic(event) {
     }
 }
 
-export { PostUpload, formattaData, ChangeProfilePic }
+export { PostUpload, formattaData, ChangeProfilePic, setTheme }
