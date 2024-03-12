@@ -11,7 +11,8 @@ const PostSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    user_id: String
+    user_id: String,
+    username: String
 })
 
 const Post = mongoose.model("Posts", PostSchema);

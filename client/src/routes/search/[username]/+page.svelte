@@ -12,7 +12,7 @@
 </script>
 
 <main class="flex flex-col h-screen">
-	<Navbar username={data.me.username}></Navbar>
+	<Navbar avatar_path={data.me.avatar_path} username={data.me.username}></Navbar>
 
 	<div class="flex-1 overflow-y-auto">
 		<div class="flex p-2">

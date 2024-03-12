@@ -102,3 +102,8 @@
 2024/03/11 21:52:34 [crit] 9048#8608: *73 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
 2024/03/11 22:22:33 [crit] 9048#8608: *85 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
 2024/03/11 22:52:32 [crit] 9048#8608: *94 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
+2024/03/12 09:17:13 [crit] 1432#9528: *21 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
+2024/03/12 09:47:12 [crit] 1432#9528: *32 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
+2024/03/12 10:17:11 [crit] 1432#9528: *33 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
+2024/03/12 10:47:11 [crit] 1432#9528: *38 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
+2024/03/12 11:17:10 [crit] 1432#9528: *39 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443

@@ -15,7 +15,7 @@
 	}
 </script>
 
-<ModalImmagineProfilo></ModalImmagineProfilo>
+<ModalImmagineProfilo biografia={data.biografia}></ModalImmagineProfilo>
 <div class="flex-1 overflow-y-auto">
 	<div class="flex p-2">
 		<div class="indicator">

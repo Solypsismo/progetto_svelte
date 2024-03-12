@@ -2,6 +2,7 @@
 // @ts-nocheck
 
     export let username;
+    export let avatar_path;
 </script>
 
 <header>
@@ -95,7 +96,7 @@
                                 <div class="w-12 mask mask-squircle">
                                     <img
                                         alt="foto-profilo"
-                                        src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                                        src={avatar_path.startsWith("https") ? avatar_path : `https://192.168.43.42/${avatar_path}`}
                                     />
                                 </div>
                             </div>

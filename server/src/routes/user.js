@@ -95,6 +95,7 @@ api_user.post("/api/update-avatar", authenticateToken, upload.single('image'), a
     if (utente) {
         try {
             const imagePath = req.file.path;
+            utente.biografia = req.body.biografia.length > 0 ? req.body.biografia : "";
             utente.avatar_path = imagePath;
             await utente.save();
 

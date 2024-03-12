@@ -10,6 +10,7 @@ const api_friendship = require('./src/routes/friendship');
 
 dotenv.config();
 const PORT = process.env.PORT || 3000;
+const DATABASE_URI = process.env.DATABASE_URI;
 
 const app = express();
 
@@ -26,6 +27,6 @@ app.get('/', async (req, res) => {
 
 
 app.listen(PORT, () => {
-    mongoose.connect('mongodb://localhost:27017/test');
+    mongoose.connect(DATABASE_URI);
     console.log(`Server in ascolto http://localhost:${PORT}`);
 });

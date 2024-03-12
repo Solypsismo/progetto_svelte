@@ -8,7 +8,7 @@
 
 <ModalLogout></ModalLogout>
 <main class="flex flex-col h-screen">
-	<Navbar username={data.username}></Navbar>
+	<Navbar avatar_path={data.avatar_path} username={data.username}></Navbar>
 
 	<slot />
 </main>
