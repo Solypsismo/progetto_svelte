@@ -48,13 +48,40 @@ api_user.post("/api/cerca-utenti", async (req, res) => {
 
 api_user.post('/api/cerca-avatar', authenticateToken, async (req, res) => {
     try {
-        const { usernames } = req.body; 
+        const { usernames } = req.body;
         const result = [];
 
         for (const username of usernames) {
             const user = await User.findOne({ username });
             if (user && user.avatar_path) {
-                result.push({ username: user.username, avatar_path: user.avatar_path, nome : user.nome });
+                result.push({ username: user.username, avatar_path: user.avatar_path, nome: user.nome });
+            }
+        }
+
+        res.status(200).json(result);
+    } catch (error) {
+        console.error('Errore nella ricerca degli avatar:', error);
+        res.status(500).json({ message: 'Errore nella ricerca degli avatar' });
+    }
+});
+
+api_user.post('/api/friends-post', authenticateToken, async (req, res) => {
+    try {
+        const { usernames } = req.body;
+        const result = [];
+
+        for (const username of usernames) {
+            const user = await User.findOne({ username });
+
+            if (user && user.avatar_path) {
+                const users_post = await Post.find({ username }).select("-user_id");
+
+                result.push({
+                    username: user.username,
+                    avatar_path: user.avatar_path,
+                    nome: user.nome,
+                    posts: users_post
+                });
             }
         }
 

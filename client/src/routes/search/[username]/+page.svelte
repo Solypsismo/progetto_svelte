@@ -2,6 +2,7 @@
 	// @ts-nocheck
 
 	import BottomNav from '$lib/components/NavInf/BottomNav.svelte';
+	import ModalLogout from '$lib/components/modal_logout.svelte';
 	import Navbar from '$lib/components/navbar.svelte';
 
 	export let data;
@@ -11,9 +12,10 @@
 	console.log(data);
 </script>
 
+
 <main class="flex flex-col h-screen">
 	<Navbar avatar_path={data.me.avatar_path} username={data.me.username}></Navbar>
-
+	<ModalLogout></ModalLogout>
 	<div class="flex-1 overflow-y-auto">
 		<div class="flex p-2">
 			<div class="avatar">

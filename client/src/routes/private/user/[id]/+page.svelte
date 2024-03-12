@@ -33,6 +33,7 @@
 		id_user={data._id}
 		descrizione={data.post.descrizione}
 		handleClick={deletePost}
+		avatar_path={data.avatar_path}
 	></Post>
 </div>
 

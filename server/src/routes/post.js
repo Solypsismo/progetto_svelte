@@ -14,7 +14,8 @@ api_post.post("/api/create", authenticateToken, upload.single('image'), async (r
       const newPost = new Post({
         path: imagePath,
         descrizione,
-        user_id: req.user._id
+        user_id: req.user._id,
+        username: req.user.username
       });
   
       // Salva il nuovo post nel database

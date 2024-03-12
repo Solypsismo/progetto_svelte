@@ -3,13 +3,14 @@
 	import { formattaData } from '$lib/action/utility';
 
 	import Immagine from '$lib/static/immagine.jpg';
-	export let id_utente_post;
+	export let id_utente_post = null;
 	export let id_user;
 	export let path;
 	export let username;
 	export let descrizione;
 	export let data;
-	export let handleClick;
+	export let handleClick = null;
+	export let avatar_path = null;
 
 	let promise = null;
 	function elimina() {
@@ -41,7 +42,7 @@
 				<div class="rounded-full">
 					<img
 						alt="immagine-profilo"
-						src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+						src={avatar_path.startsWith("https") ? avatar_path : `https://192.168.43.42/${avatar_path}`}
 					/>
 				</div>
 			</div>

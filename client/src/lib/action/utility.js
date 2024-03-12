@@ -84,7 +84,7 @@ async function ChangeProfilePic(event) {
         }
 
     } catch (error) {
-        // console.error("questo è il porco di dio di errore", error);
+        // console.error("errore", error);
     }
 }
 
