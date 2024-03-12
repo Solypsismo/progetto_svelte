@@ -103,7 +103,7 @@
 	</div>
 	<div class="h-[350px]">
 		<img
-			src={path ? `https://192.168.1.161/` + path : Immagine}
+			src={path ? `https://192.168.43.42/` + path : Immagine}
 			alt="post-immagine"
 			class="object-cover h-full w-full"
 		/>

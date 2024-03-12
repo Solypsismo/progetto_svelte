@@ -25,8 +25,9 @@ export async function load({ params, locals, cookies }) {
         const status = await statusJSON.json();
 
         if (res_form) {
+            let tmp = { success: res_form.success, message: res_form.message }
             res_form = null;
-            return { me: locals.utente, utente: res, res_form: { success: true }, status: status.status }
+            return { me: locals.utente, utente: res, res_form: tmp, status: status.status }
         }
         else
             return { me: locals.utente, utente: res, status: status.messaggio }
@@ -38,9 +39,8 @@ export async function load({ params, locals, cookies }) {
 }
 
 export const actions = {
-    default: async (event) => {
-        const formData = Object.fromEntries(await event.request.formData());
-
+    sendRequest: async (event) => {
+        const { username } = event.params;
         const token = event.cookies.get("token");
         let resJSON;
 
@@ -51,7 +51,7 @@ export const actions = {
                     "Authorization": `Bearer ${token}`,
                     "Content-type": "application/json"
                 },
-                body: JSON.stringify({ username_reciver: formData.username })
+                body: JSON.stringify({ username_reciver: username })
             })
         } catch (error) {
             console.log("errore nel fetch : ", error.message);
@@ -59,9 +59,52 @@ export const actions = {
 
         try {
             const res = await resJSON.json();
-            res_form = { success: res.success };
+            if (res.success) res_form = { success: res.success, message: "Richiesta inviata con successo" };
         } catch (error) {
             console.error("errore nel parse : ", error.message);
         }
-    }
+    },
+
+    acceptRequest: async (event) => {
+        // const formData = Object.fromEntries(await event.request.formData());
+        const { username } = event.params;
+        const token = event.cookies.get("token");
+
+        // try {
+        const resJSON = await fetch("http://localhost:3000/friendship/api/accept-request", {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({ username_reciver: username })
+        })
+
+        const res = await resJSON.json();
+
+        if (res.success) {
+            res_form = { success: res.success, message: "Richiesta accettata con successo" };
+        }
+    },
+
+    declineRequest: async (event) => {
+        const { username } = event.params;
+        const token = event.cookies.get("token");
+
+        // try {
+        const resJSON = await fetch("http://localhost:3000/friendship/api/decline-request", {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({ username_reciver: username })
+        })
+
+        const res = await resJSON.json();
+
+        if (res.success) {
+            res_form = { success: res.success, message: "Richiesta rifiutata." };
+        }
+    } 
 }

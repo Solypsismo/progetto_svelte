@@ -22,7 +22,7 @@
 						alt="immagine-profilo"
 						src={data.utente.avatar_path.startsWith('https')
 							? data.utente.avatar_path
-							: `https://192.168.1.161/${data.utente.avatar_path}`}
+							: `https://192.168.43.42/${data.utente.avatar_path}`}
 					/>
 				</div>
 			</div>
@@ -53,39 +53,34 @@
 			{#if data.res_form?.success}
 				<div class="toast toast-top toast-center">
 					<div class="alert alert-success">
-						<span>Richiesta inviata con successo!.</span>
+						<span>{data.res_form.message}</span>
 					</div>
 				</div>
 			{/if}
 
-
 			<!-- //TODO: CREA TUTTI GLI ENDPOINT PER ACCETTARE/RIFIUTARE/ANNULLARE LA RICHIESTA -->
 			{#if !data.status}
-				<form method="POST">
-					<input type="hidden" name="username" value={data.utente.username} />
+				<form method="POST" action="?/sendRequest">
 					<button type="submit" class="btn btn-primary w-full"> Invia Richiesta </button>
 				</form>
 			{:else if data.status == 'io ho inviato la richiesta'}
-				<form method="POST">
-					<input type="hidden" name="username" value={data.utente.username} />
-					<button type="submit" class="btn btn-warning w-full"> Richiesta in attesa </button>
-				</form>
-			{:else if data.status == "mi e stata inviata la richiesta"}
+				<button type="submit" class="btn btn-warning w-full"> Richiesta in attesa </button>
+			{:else if data.status == 'mi e stata inviata la richiesta'}
 				<div class="grid grid-cols-2 gap-2">
 					<div>
-						<form method="POST">
-							<input type="hidden" name="username" value={data.utente.username} />
+						<form method="POST" action="?/acceptRequest">
 							<button type="submit" class="btn btn-success w-full"> Accetta Richiesta </button>
 						</form>
 					</div>
 
 					<div>
-						<form method="POST">
-							<input type="hidden" name="username" value={data.utente.username} />
+						<form method="POST" action="?/declineRequest">
 							<button type="submit" class="btn btn-error w-full"> Rifiuta Richiesta </button>
 						</form>
 					</div>
 				</div>
+			{:else if data.status == "amici"}
+				<button type="submit" class="btn btn-info w-full"> Siete amici </button>
 			{/if}
 		</div>
 
@@ -114,13 +109,15 @@
 						<!-- svelte-ignore a11y-unknown-role -->
 						<!-- svelte-ignore a11y-click-events-have-key-events -->
 						<div
-							on:click={() => {console.log('ciao')}}
+							on:click={() => {
+								console.log('ciao');
+							}}
 							data-id-immagine={post._id}
 							class="outline outline-1 outline-black aspect-square"
 						>
 							<img
 								data-id-immagine={post._id}
-								src={'https://192.168.1.161/' + post.path}
+								src={'https://192.168.43.42/' + post.path}
 								alt="img"
 								class="aspect-square"
 							/>

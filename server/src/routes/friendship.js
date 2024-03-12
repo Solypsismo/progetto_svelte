@@ -54,9 +54,66 @@ api_friendship.get("/api/get-status/:username", authenticateToken, async (req, r
             res.json({ success: true, messaggio: "amici" });
         }
     } else {
-        res.json({success: false, messaggio: null});
+        res.json({ success: false, messaggio: null });
     }
 
+})
+
+api_friendship.get("/api/get-friends", authenticateToken, async (req, res) => {
+    const username = req.user.username;
+
+    try {
+        // Cerca i record in base al criterio specificato
+        const records = await Friendship.find({
+            $or: [{ first_user: username }, { second_user: username }],
+            status: "amici"
+        });
+
+        // Restituisci i record trovati
+        res.json({success: true, amici: records});
+    } catch (error) {
+        // Gestione degli errori
+        console.error(error);
+        res.status(500).json({success: false, message: 'Errore nel trovare i record.' });
+    }
+})
+
+api_friendship.post("/api/accept-request", authenticateToken, async (req, res) => {
+    const { username_reciver } = req.body;
+    const username_sender = req.user.username;
+
+    const primary_key = [username_sender, username_reciver].sort();
+
+    const richiesta = await Friendship.findOne({ first_user: primary_key[0], second_user: primary_key[1] });
+
+    if(richiesta) {
+        richiesta.status = "amici";
+        
+        try {
+            await richiesta.save();
+            res.json({success: true})
+        } catch (error) {
+            res.json({success: false});
+        }
+    }else {
+        res.json({success: false});
+    }
+})
+
+api_friendship.post("/api/accept-request", authenticateToken, async (req, res) => {
+    const { username_reciver } = req.body;
+    const username_sender = req.user.username;
+
+    const primary_key = [username_sender, username_reciver].sort();
+
+    const richiesta = await Friendship.findOneAndDelete({ first_user: primary_key[0], second_user: primary_key[1] });
+
+    if(richiesta) {
+        res.json({success: true})
+        
+    }else {
+        res.json({success: false});
+    }
 })
 
 module.exports = api_friendship;
