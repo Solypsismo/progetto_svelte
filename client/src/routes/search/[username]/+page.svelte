@@ -24,7 +24,7 @@
 						alt="immagine-profilo"
 						src={data.utente.avatar_path.startsWith('https')
 							? data.utente.avatar_path
-							: `https://192.168.43.42/${data.utente.avatar_path}`}
+							: `https://192.168.1.161/${data.utente.avatar_path}`}
 					/>
 				</div>
 			</div>
@@ -119,7 +119,7 @@
 						>
 							<img
 								data-id-immagine={post._id}
-								src={'https://192.168.43.42/' + post.path}
+								src={'https://192.168.1.161/' + post.path}
 								alt="img"
 								class="aspect-square"
 							/>

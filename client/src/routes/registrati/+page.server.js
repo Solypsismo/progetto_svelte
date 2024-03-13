@@ -21,7 +21,7 @@ export const actions = {
             // cookies.set("token", dati.token, {path: "/", httpOnly: true, sameSite: "strict"})
             throw redirect(303, "/login")
         }else{
-            throw redirect(303, '/signin');
+            throw redirect(303, '/registrati');
         }
 
         

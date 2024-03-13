@@ -134,3 +134,6 @@
 2024/03/12 16:00:25 [error] 1432#9528: *234 CreateFile() "C:/Users/GiuseppeCappiello/Desktop/Giuseppe/svelte repos/SvelteProg_v_0.1/server/uploads/immagine_1710082533132.jpg" failed (2: The system cannot find the file specified), client: 192.168.43.42, server: localhost, request: "GET /uploads/immagine_1710082533132.jpg HTTP/1.1", host: "192.168.43.42", referrer: "https://192.168.43.42:5173/"
 2024/03/12 16:03:11 [crit] 1432#9528: *241 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
 2024/03/12 16:33:10 [crit] 1432#9528: *250 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
+2024/03/12 17:03:10 [crit] 1432#9528: *251 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
+2024/03/12 17:30:44 [alert] 17916#18556: worker process 9336 exited with code C0000142
+2024/03/12 17:30:44 [alert] 17916#18556: could not respawn worker

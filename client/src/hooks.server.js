@@ -23,7 +23,7 @@ export const handle = async ({ event, resolve }) => {
         })
     }
 
-    if(event.url.pathname.startsWith("/login") || event.url.pathname.startsWith("/signin") ){
+    if(event.url.pathname.startsWith("/login") || event.url.pathname.startsWith("/registrati") ){
         const token = event.cookies.get("token");
 
         if(token){

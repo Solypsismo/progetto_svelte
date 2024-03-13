@@ -59,7 +59,7 @@
 										alt="foto-profilo"
 										src={avatar_path.startsWith('https')
 											? avatar_path
-											: `https://192.168.43.42/${avatar_path}`}
+											: `https://192.168.1.161/${avatar_path}`}
 									/>
 								</div>
 							</div>
