@@ -61,7 +61,7 @@ async function ChangeProfilePic(event) {
     formData.append("token", token);
 
     try {
-        const response = await fetch("http://localhost:3000/utente/api/update-avatar", { // Sostituisci con l'URL corretto per la tua richiesta POST
+        const response = await fetch("http://localhost:3000/utente/api/update-avatar", {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${token}`
@@ -76,7 +76,7 @@ async function ChangeProfilePic(event) {
             path: "/",
             httpOnly: true,
             sameSite: "strict",
-            domain: "192.168.1.161",
+            domain: "192.168.43.42",
         }
 
         if (responseParse.success) {
@@ -92,4 +92,30 @@ async function ChangeProfilePic(event) {
     }
 }
 
-export { PostUpload, formattaData, ChangeProfilePic, setTheme }
+async function like(event) {
+
+    const formData = Object.fromEntries(await event.request.formData());
+
+    const token = event.cookies.get("token");
+    const resJSON = await fetch("http://localhost:3000/like/api", {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(formData)
+    })
+
+    const res = await resJSON.json();
+
+    if (res.success) {
+        console.log(res.message);
+        return true;
+    } else {
+        console.log(res);
+        console.log("like non messo");
+        return false;
+    }
+}
+
+export { PostUpload, formattaData, ChangeProfilePic, setTheme, like }

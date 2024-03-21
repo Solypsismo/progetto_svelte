@@ -1,9 +1,9 @@
 // @ts-nocheck
 export async function load({ params, cookies }) {
-    const { id } = params
+    const { idimg } = params
     const token = cookies.get("token");
 
-    const resJSON = await fetch(`http://localhost:3000/post/api/get/${id}`, {
+    const resJSON = await fetch(`http://localhost:3000/post/api/get/${idimg}`, {
         headers:{
             "Authorization": `Bearer ${token}`
         }
@@ -13,7 +13,7 @@ export async function load({ params, cookies }) {
 
     if (res.success) {
         res.post.liked = res.liked;
-        return { post: res.post, token }
+        return { post: res.post, token}
     } else {
         return { post: 404 }
     }

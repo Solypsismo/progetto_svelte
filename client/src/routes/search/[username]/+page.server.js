@@ -16,6 +16,8 @@ export async function load({ params, locals, cookies }) {
             redirect(308, "/private/user");
         }
 
+        locals.amicoCercato = res;
+
         const statusJSON = await fetch(`http://localhost:3000/friendship/api/get-status/${username}`, {
             headers: {
                 "Authorization": `Bearer ${token}`,

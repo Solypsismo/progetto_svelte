@@ -57,17 +57,21 @@
 						/>
 					</div>
 				</div>
+				<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 				<ul
 					tabindex="0"
 					class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
 				>
 					<li>
+						<!-- svelte-ignore a11y-missing-attribute -->
 						<a class="justify-between">
 							Profile
 							<span class="badge">New</span>
 						</a>
 					</li>
+					<!-- svelte-ignore a11y-missing-attribute -->
 					<li><a>Settings</a></li>
+					<!-- svelte-ignore a11y-missing-attribute -->
 					<li><a>Logout</a></li>
 				</ul>
 			</div>

@@ -6,10 +6,14 @@
 	import Navbar from '$lib/components/navbar.svelte';
 
 	export let data;
-	export let form;
 
-	console.log(form);
+	function handleClick(event)  {
+		const idimg = event.target.getAttribute("data-id-immagine");
+		window.location.href += `/${idimg}`;
+	}
+
 	console.log(data);
+	localStorage.setItem("utente-cercato", JSON.stringify(data.utente));
 </script>
 
 
@@ -24,7 +28,7 @@
 						alt="immagine-profilo"
 						src={data.utente.avatar_path.startsWith('https')
 							? data.utente.avatar_path
-							: `https://192.168.1.161/${data.utente.avatar_path}`}
+							: `https://192.168.43.42/${data.utente.avatar_path}`}
 					/>
 				</div>
 			</div>
@@ -111,15 +115,13 @@
 						<!-- svelte-ignore a11y-unknown-role -->
 						<!-- svelte-ignore a11y-click-events-have-key-events -->
 						<div
-							on:click={() => {
-								console.log('ciao');
-							}}
+							on:click={handleClick}
 							data-id-immagine={post._id}
 							class="outline outline-1 outline-black aspect-square"
 						>
 							<img
 								data-id-immagine={post._id}
-								src={'https://192.168.1.161/' + post.path}
+								src={'https://192.168.43.42/' + post.path}
 								alt="img"
 								class="aspect-square"
 							/>

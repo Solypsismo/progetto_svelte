@@ -137,3 +137,19 @@
 2024/03/12 17:03:10 [crit] 1432#9528: *251 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
 2024/03/12 17:30:44 [alert] 17916#18556: worker process 9336 exited with code C0000142
 2024/03/12 17:30:44 [alert] 17916#18556: could not respawn worker
+2024/03/13 14:21:40 [crit] 13928#12592: *31 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
+2024/03/13 14:51:39 [crit] 13928#12592: *32 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
+2024/03/13 15:21:38 [crit] 13928#12592: *37 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
+2024/03/13 15:51:38 [crit] 13928#12592: *38 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
+2024/03/13 16:21:37 [crit] 13928#12592: *39 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
+2024/03/21 11:10:11 [error] 17948#9748: *7 CreateFile() "C:\Users\GiuseppeCappiello\Desktop\Giuseppe\projects\svelte\SvelteProg_v_0.1\nginx-1.24.0/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "https://localhost/"
+2024/03/21 11:16:18 [error] 17948#9748: *15 CreateFile() "C:\Users\GiuseppeCappiello\Desktop\Giuseppe\projects\svelte\SvelteProg_v_0.1\nginx-1.24.0/html/favicon.ico" failed (2: The system cannot find the file specified), client: 192.168.43.42, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "192.168.43.42", referrer: "https://192.168.43.42/uploads/schermata_registrazionepng_1710335577240.png"
+2024/03/21 11:19:21 [crit] 17948#9748: *30 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
+2024/03/21 11:49:20 [crit] 17948#9748: *53 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
+2024/03/21 12:19:19 [crit] 17948#9748: *92 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
+2024/03/21 12:49:19 [crit] 17948#9748: *111 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
+2024/03/21 13:02:06 [notice] 11884#14852: signal process started
+2024/03/21 14:33:03 [crit] 8276#10872: *13 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
+2024/03/21 15:03:02 [crit] 8276#10872: *26 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
+2024/03/21 15:33:01 [crit] 8276#10872: *35 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
+2024/03/21 15:43:20 [notice] 332#15320: signal process started

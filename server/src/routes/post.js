@@ -1,6 +1,7 @@
 const express = require('express');
 const Post = require('../model/Post');
 const { authenticateToken, upload } = require('../utility/functions');
+const Like = require('../model/Like');
 const api_post = express.Router();
 
 api_post.post("/api/create", authenticateToken, upload.single('image'), async (req, res) => {
@@ -47,7 +48,13 @@ api_post.get("/api/get/:id", authenticateToken, async (req, res) => {
     const post = await Post.findById(id);
 
     if(post) {
-      res.json({success: true, post})
+      const liked = await Like.findOne({ id_post: id, id_utente: req.user._id });
+
+      if(liked) {
+        res.json({success: true, post, liked: true});
+      }else {
+        res.json({success: true, post, liked: false});
+      }
     }else {
       res.status(404).json({success: false, error: "Post not found"});
     }

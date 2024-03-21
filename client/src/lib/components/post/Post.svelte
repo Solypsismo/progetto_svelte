@@ -11,6 +11,8 @@
 	export let data;
 	export let handleClick = null;
 	export let avatar_path = null;
+	export let id_post;
+	export let like = false;
 
 	let promise = null;
 	function elimina() {
@@ -42,7 +44,9 @@
 				<div class="rounded-full">
 					<img
 						alt="immagine-profilo"
-						src={avatar_path.startsWith("https") ? avatar_path : `https://192.168.1.161/${avatar_path}`}
+						src={avatar_path.startsWith('https')
+							? avatar_path
+							: `https://192.168.43.42/${avatar_path}`}
 					/>
 				</div>
 			</div>
@@ -51,33 +55,33 @@
 		</div>
 
 		<div class="flex items-center">
-			<div class="dropdown dropdown-bottom dropdown-end">
-				<div
-					tabindex="0"
-					role="button"
-					class="btn m-1 bg-transparent border-0 hover:bg-transparent"
-				>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke-width="1.5"
-						stroke="currentColor"
-						class="w-6 h-6"
+			{#if id_utente_post == id_user}
+				<div class="dropdown dropdown-bottom dropdown-end">
+					<div
+						tabindex="0"
+						role="button"
+						class="btn m-1 bg-transparent border-0 hover:bg-transparent"
 					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
-						/>
-					</svg>
-				</div>
-				<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-				<ul
-					tabindex="0"
-					class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-				>
-					{#if id_utente_post == id_user}
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="w-6 h-6"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
+							/>
+						</svg>
+					</div>
+					<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+					<ul
+						tabindex="0"
+						class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+					>
 						<li>
 							<button on:click={elimina} class="btn btn-outline btn-error"
 								><svg
@@ -97,36 +101,58 @@
 								Delete</button
 							>
 						</li>
-					{/if}
-				</ul>
-			</div>
+					</ul>
+				</div>
+			{/if}
 		</div>
 	</div>
 	<div class="h-[350px]">
 		<img
-			src={path ? `https://192.168.1.161/` + path : Immagine}
+			src={path ? `https://192.168.43.42/` + path : Immagine}
 			alt="post-immagine"
 			class="object-cover h-full w-full"
 		/>
 	</div>
 	<div class="h-[50px] flex place-content-between">
 		<div class="flex items-center h-full gap-4 p-4">
-			<button
-				><svg
-					xmlns="http://www.w3.org/2000/svg"
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke-width="1.5"
-					stroke="currentColor"
-					class="w-6 h-6 hover:fill-red-600"
-				>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-					/>
-				</svg>
-			</button>
+			<form method="POST" action="?/like">
+				<input type="hidden" name="id_post" value={id_post} />
+				{#if like}
+					<button type="submit"
+						><svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="w-6 h-6 fill-red-600"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+							/>
+						</svg>
+					</button>
+				{:else}
+					<button type="submit"
+						><svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="w-6 h-6 hover:fill-red-600"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+							/>
+						</svg>
+					</button>
+				{/if}
+			</form>
 
 			<button
 				><svg
