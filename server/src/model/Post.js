@@ -12,7 +12,8 @@ const PostSchema = new mongoose.Schema({
         default: 0
     },
     user_id: String,
-    username: String
+    username: String,
+    liked: Boolean
 })
 
 const Post = mongoose.model("Posts", PostSchema);

@@ -37,7 +37,7 @@
 		</div>
 	{/if}
 {/await}
-<div class="h-[600px] w-screen">
+<div class="max-h-[600px] w-screen">
 	<div class="header-post h-[50px] flex place-content-between">
 		<div class="avatar-e-nome flex">
 			<div class="avatar p-1 pl-3 w-20">
@@ -209,8 +209,10 @@
 		</div>
 	</div>
 
-	<div class="max-h-[100px] px-3">
-		{descrizione}
+	<div class="max-h-[100px] max-w-full overflow-scroll px-3">
+		<article class="text-pretty">
+			{descrizione}
+		</article>
 	</div>
 
 	<div class="h-[50px] flex items-center px-3">

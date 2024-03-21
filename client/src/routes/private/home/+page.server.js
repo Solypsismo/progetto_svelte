@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { PostUpload } from '$lib/action/utility'
+import { PostUpload, like } from '$lib/action/utility'
 
 export async function load({ cookies, locals }) {
 
@@ -42,5 +42,6 @@ export async function load({ cookies, locals }) {
 
 /** @type {import('./$types').Actions} */
 export const actions = {
-    PostUpload
+    PostUpload,
+    like
 }

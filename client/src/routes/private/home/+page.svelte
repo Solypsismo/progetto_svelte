@@ -21,6 +21,8 @@
 		{#each data.amici as amico}
 			{#each amico.posts as post}
 				<Post   
+					id_post={post._id}
+					like={post.liked}
                     id_user="none" 
                     path={post.path} 
                     username={amico.username}

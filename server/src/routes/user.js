@@ -1,6 +1,7 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const User = require('../model/User');
+const Like = require('../model/Like');
 const Post = require('../model/Post');
 
 const { authenticateToken, upload } = require('../utility/functions');
@@ -76,6 +77,18 @@ api_user.post('/api/friends-post', authenticateToken, async (req, res) => {
             if (user && user.avatar_path) {
                 const users_post = await Post.find({ username }).select("-user_id");
 
+                if(users_post.length) {
+                    for(const post of users_post) {
+                        const liked = await Like.findOne({
+                            id_post: post._id,
+                            id_utente: req.user._id
+                        })
+                        
+                        if(liked) post.liked = true;
+                        else post.liked = false;
+                    }
+                }
+
                 result.push({
                     username: user.username,
                     avatar_path: user.avatar_path,
@@ -91,6 +104,42 @@ api_user.post('/api/friends-post', authenticateToken, async (req, res) => {
         res.status(500).json({ message: 'Errore nella ricerca degli avatar' });
     }
 });
+
+// api_user.post('/api/friends-post', authenticateToken, async (req, res) => {
+//     try {
+//         const { usernames } = req.body;
+//         const result = [];
+
+//         for (const username of usernames) {
+//             const user = await User.findOne({ username });
+
+//             if (user && user.avatar_path) {
+//                 const users_post = await Post.find({ username }).select("-user_id");
+
+//                 // Itera su ogni post dell'utente
+//                 for (const post of users_post) {
+//                     // Cerca se l'utente ha messo like a questo post
+//                     const liked = await Like.findOne({ id_post: post._id, id_utente: req.user._id });
+
+//                     // Aggiungi l'attributo liked al post
+//                     post.liked = !!liked;
+//                 }
+                
+//                 result.push({
+//                     username: user.username,
+//                     avatar_path: user.avatar_path,
+//                     nome: user.nome,
+//                     posts: users_post
+//                 });
+//             }
+//         }
+
+//         res.status(200).json(result);
+//     } catch (error) {
+//         console.error('Errore nella ricerca degli avatar:', error);
+//         res.status(500).json({ message: 'Errore nella ricerca degli avatar' });
+//     }
+// });
 
 api_user.get("/api/get/:username", async (req, res) => {
     const username = req.params.username;
