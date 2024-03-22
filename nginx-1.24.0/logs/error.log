@@ -169,3 +169,4 @@
 2024/03/22 15:03:14 [crit] 14580#10392: *110 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
 2024/03/22 15:33:13 [crit] 14580#10392: *140 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
 2024/03/22 15:51:55 [notice] 10356#20568: signal process started
+2024/03/22 16:03:12 [crit] 14580#10392: *188 SSL_read() failed (SSL: error:14191044:SSL routines:tls1_enc:internal error) while waiting for request, client: 127.0.0.1, server: 0.0.0.0:443
