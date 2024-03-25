@@ -18,7 +18,7 @@
 				class="hidden"
 				bind:value={value_immagine}
 			/>
-			<div class="w-full font-mono overflow-clip text-slate-50/30">{value_immagine === undefined ? "" : value_immagine}</div>
+			<div class="w-full font-mono overflow-clip text-primary">{value_immagine === undefined ? "" : value_immagine}</div>
 
 			<textarea
 				class="textarea textarea-primary w-full mt-3"

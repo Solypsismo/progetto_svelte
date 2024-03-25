@@ -26,7 +26,10 @@
 			{/each}
 		{/each}
 	{:else}
-		<div>Inizia a farti degli amici!</div>
+	<div class="p-4">
+		<a href="/search" class="text-4xl font-bold text-primary underline">Inizia a farti degli amici!</a>
+	</div>
+
 	{/if}
 </div>
 
